@@ -35,23 +35,22 @@ export const RequestAirdrop: FC = () => {
     }, [publicKey, connection, getUserSOLBalance]);
 
     return (
-
-        <div className="flex flex-row justify-center">
-                <div className="relative group items-center">
-                    <div className="m-1 absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-fuchsia-500 
-                    rounded-lg blur opacity-20 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
-            
-                        <button
-                            className="px-8 m-2 btn animate-pulse bg-gradient-to-br from-indigo-500 to-fuchsia-500 hover:from-white hover:to-purple-300 text-black"
-                            onClick={onClick}
-                            >
-                                <span>Airdrop 1 </span>
-                
-                        </button>
+        <div className="rounded-2xl border border-white/10 bg-white/10 backdrop-blur-xl px-4 py-4 shadow-lg">
+            <div className="flex items-center justify-between mb-3">
+                <div>
+                    <p className="text-sm font-semibold text-white">Airdrop 1 SOL</p>
+                    <p className="text-xs text-slate-400">Devnet uniquement</p>
                 </div>
+                <span className="text-[11px] px-2 py-1 rounded-full bg-emerald-500/15 text-emerald-200 border border-emerald-500/30">
+                    Beta
+                </span>
+            </div>
+            <button
+                className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-amber-400 text-white font-semibold shadow-lg hover:opacity-90 transition"
+                onClick={onClick}
+            >
+                Demander 1 SOL
+            </button>
         </div>
-
-        
     );
 };
-

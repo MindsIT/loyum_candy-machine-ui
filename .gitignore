@@ -38,3 +38,6 @@ yarn-error.log*
 
 # logs
 *.logloyum-417114-firebase-adminsdk-9co2d-c65c161744.json
+
+# secrets
+secret/

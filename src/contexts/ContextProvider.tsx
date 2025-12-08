@@ -1,7 +1,6 @@
 import { WalletAdapterNetwork, WalletError } from '@solana/wallet-adapter-base';
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import {
-    UnsafeBurnerWalletAdapter,
     PhantomWalletAdapter,
     SolflareWalletAdapter,
     // tu peux en ajouter d'autres
@@ -31,7 +30,6 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
         () => [
             new PhantomWalletAdapter(),
             new SolflareWalletAdapter(),
-            new UnsafeBurnerWalletAdapter(), // en dernier pour fallback
         ],
         [network]
     );

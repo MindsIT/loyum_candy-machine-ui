@@ -8,6 +8,7 @@ import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 // Components
 import { RequestAirdrop } from '../../components/RequestAirdrop';
 import { CandyMint } from '../../components/CandyMint';
+import { TokenCreator } from '../../components/TokenCreator';
 
 
 
@@ -32,42 +33,34 @@ export const HomeView: FC = ({ }) => {
 
   return (
 
-    <div className="md:hero mx-auto p-4">
-      <div className="md:hero-content flex flex-col">
-        <div className='mt-6'>
-        <div className='text-sm font-normal align-bottom text-right text-slate-600 mt-4'>v{pkg.version}</div>
-        <h1 className="text-center text-5xl md:pl-12 font-bold text-transparent bg-clip-text bg-gradient-to-br from-indigo-500 to-fuchsia-500 mb-4">
-          Solana Next
-        </h1>
-        </div>
-        <h4 className="md:w-full text-2x1 md:text-4xl text-center text-slate-300 my-2">
-          <p>Unleash the full power of blockchain with Solana and Next.js 13.</p>
-          <p className='text-slate-500 text-2x1 leading-relaxed'>Full-stack Solana applications made easy.</p>
-        </h4>
-        <div className="relative group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-indigo-500 rounded-lg blur opacity-40 animate-tilt"></div>
-          <div className="max-w-md mx-auto mockup-code bg-primary border-2 border-[#5252529f] p-6 px-10 my-2">
-            <pre data-prefix=">">
-              <code className="truncate">{`npx create-solana-dapp <dapp-name>`} </code>
-            </pre>
+    <div className="space-y-10">
+      <div className="max-w-6xl mx-auto rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900/70 via-slate-900/40 to-fuchsia-900/20 backdrop-blur-2xl px-6 sm:px-10 py-8 shadow-2xl">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div className="space-y-3">
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Solana Next</p>
+            <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-amber-300">
+              Mint NFT + Tokens SPL sur devnet
+            </h1>
+          </div>
+          <div className="text-sm text-slate-400 bg-white/5 border border-white/10 rounded-xl px-4 py-2">
+            v{pkg.version}
           </div>
         </div>
-        <div className="flex flex-col mt-2">
-          <RequestAirdrop />
-          <CandyMint />
-          <h4 className="md:w-full text-2xl text-slate-300 my-2">
-          {wallet &&
-          <div className="flex flex-row justify-center">
-            <div>
-              {(balance || 0).toLocaleString()}
-              </div>
-              <div className='text-slate-600 ml-2'>
-                SOL
-              </div>
-          </div>
-          }
-          </h4>
+      </div>
+
+      <div className="max-w-6xl mx-auto space-y-8">
+        <CandyMint />
+        <TokenCreator />
+        <div className="rounded-2xl border border-white/10 bg-white/10 backdrop-blur-xl px-4 py-4 text-sm text-slate-300 shadow-lg">
+          Solde wallet {wallet?.publicKey ? (
+            <span className="font-semibold text-slate-100 ml-2">
+              {(balance || 0).toLocaleString()} SOL
+            </span>
+          ) : (
+            <span className="ml-2 text-slate-400">Connectez votre wallet</span>
+          )}
         </div>
+        <RequestAirdrop />
       </div>
     </div>
   );
